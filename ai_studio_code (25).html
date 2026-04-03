@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Aanu | Happy 16th Birthday ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,600&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --rose-gold: #B76E79;
+            --pastel-pink: #FCE4EC;
+            --soft-cream: #FFFDF9;
+        }
+
+        body {
+            background-color: var(--soft-cream);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: #4A4A4A;
+        }
+
+        .serif { font-family: 'Playfair Display', serif; }
+        .handwritten { font-family: 'Dancing Script', cursive; }
+
+        /* Next-by-Next Navigation */
+        .step-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Next Button Aesthetic */
+        .next-btn {
+            background: white;
+            color: var(--rose-gold);
+            padding: 12px 35px;
+            border-radius: 50px;
+            border: 1px solid var(--rose-gold);
+            font-weight: 600;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 50;
+        }
+        .next-btn:hover {
+            background: var(--rose-gold);
+            color: white;
+            box-shadow: 0 5px 20px rgba(183, 110, 121, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Cake & Balloons */
+        .cake-layer {
+            background: white;
+            border-radius: 12px 12px 0 0;
+            box-shadow: inset 0 -10px 0 #fce4ec;
+            border: 1px solid #f3f3f3;
+        }
+        
+        .balloon {
+            transition: 0.5s;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        .popped { transform: scale(0); opacity: 0; pointer-events: none; }
+        
+        .msg-hidden { opacity: 0; transition: 1s; transform: scale(0.8); }
+        .msg-visible { opacity: 1; transform: scale(1); }
+
+        /* Letter Box Style */
+        .letter-card {
+            background: white;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+            max-width: 650px;
+            border: 1px solid #fff5f5;
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STEP 0: MAGICAL LOADER -->
+    <div id="step0" class="fixed inset-0 z-[100] bg-[#FCE4EC] flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="relative mb-6">
+            <div class="w-20 h-20 border-4 border-white border-t-[#B76E79] rounded-full animate-spin"></div>
+            <div class="absolute inset-0 flex items-center justify-center">✨</div>
+        </div>
+        <p class="serif text-xl text-[#B76E79] animate-pulse italic">A special journey for Aanu is loading...</p>
+    </div>
+
+    <!-- STEP 1: HERO WELCOME -->
+    <div id="s1" class="step-content active">
+        <div class="animate-fade-in">
+            <p class="text-[#B76E79] tracking-[0.4em] uppercase text-xs mb-4 font-bold">The World Got Brighter</p>
+            <h1 class="serif text-5xl md:text-8xl text-[#4A4A4A] leading-tight mb-4">
+                A Cutiepie was born <br> 
+                <span class="text-[#B76E79] italic font-normal">16 years ago!</span>
+            </h1>
+            <p class="handwritten text-4xl text-[#B76E79] mt-6">Happy Birthday, Aanu</p>
+            <button class="next-btn" onclick="goToStep(2)">Begin the Journey →</button>
+        </div>
+    </div>
+
+    <!-- STEP 2: INTERACTIVE CAKE & BALLOONS -->
+    <div id="s2" class="step-content bg-[#FFF9F9]">
+        <h2 class="serif text-2xl text-[#B76E79] mb-12 italic">Pop the balloons to reveal a secret!</h2>
+        
+        <div class="relative w-full max-w-md h-40 flex items-center justify-around mb-16">
+            <div id="b1" onclick="pop(1)" class="balloon w-16 h-24 bg-pink-200 rounded-full flex items-center justify-center text-2xl shadow-md">🎈</div>
+            <div id="b2" onclick="pop(2)" class="balloon w-16 h-24 bg-rose-200 rounded-full flex items-center justify-center text-2xl shadow-md" style="animation-delay: 0.5s">🎈</div>
+            <div id="b3" onclick="pop(3)" class="balloon w-16 h-24 bg-pink-100 rounded-full flex items-center justify-center text-2xl shadow-md" style="animation-delay: 1s">🎈</div>
+            <div id="b4" onclick="pop(4)" class="balloon w-16 h-24 bg-rose-100 rounded-full flex items-center justify-center text-2xl shadow-md" style="animation-delay: 1.5s">🎈</div>
+            
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <p id="secret-msg" class="msg-hidden serif text-4xl md:text-5xl text-[#B76E79] font-bold">YOU ARE A CUTIEE</p>
+            </div>
+        </div>
+
+        <!-- Aesthetic 3D Cake -->
+        <div class="flex flex-col items-center">
+            <div class="w-3 h-14 bg-pink-300 rounded-full relative">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-4 h-6 bg-orange-400 rounded-full blur-sm animate-pulse"></div>
+            </div>
+            <div class="cake-layer w-36 h-16 flex items-center justify-center text-rose-200 serif text-2xl">16</div>
+            <div class="cake-layer w-56 h-20 -mt-1 flex items-center justify-center handwritten text-2xl text-[#B76E79]">Aanu</div>
+            <div class="w-64 h-3 bg-white rounded-full shadow-md"></div>
+        </div>
+
+        <button id="next2" class="next-btn hidden" onclick="goToStep(3)">See Sweet Memories →</button>
+    </div>
+
+    <!-- STEP 3: PHOTO GALLERY -->
+    <div id="s3" class="step-content bg-[#FFFDF9]">
+        <h2 class="serif text-4xl text-[#4A4A4A] mb-12 italic">Sweet 16 Moments</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl px-4">
+            <div class="bg-white p-2 shadow-xl -rotate-3 hover:rotate-0 transition-transform">
+                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400" class="w-full h-40 md:h-60 object-cover">
+            </div>
+            <div class="bg-white p-2 shadow-xl rotate-2 hover:rotate-0 transition-transform mt-8">
+                <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=400" class="w-full h-40 md:h-60 object-cover">
+            </div>
+            <div class="bg-white p-2 shadow-xl -rotate-1 hover:rotate-0 transition-transform">
+                <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=400" class="w-full h-40 md:h-60 object-cover">
+            </div>
+        </div>
+        <button class="next-btn" onclick="goToStep(4)">Wait, One More Thing... 💌</button>
+    </div>
+
+    <!-- STEP 4: FINAL EMOTIONAL LETTER (Custom Message) -->
+    <div id="s4" class="step-content bg-[#FCE4EC]">
+        <div class="letter-card text-center relative overflow-hidden">
+            <!-- Watercolor Accents -->
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-pink-100 rounded-full blur-3xl opacity-60"></div>
+            <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-orange-100 rounded-full blur-3xl opacity-60"></div>
+            
+            <div class="relative z-10">
+                <h3 class="serif text-2xl text-[#B76E79] mb-8 italic font-bold">To my dearest Aanu,</h3>
+                
+                <div class="serif text-gray-700 leading-relaxed text-base md:text-lg italic space-y-5 text-justify md:text-center">
+                    <p>
+                        "As you blow out the candles today, I hope each flame carries a wish that comes true. 
+                        May your heart always be filled with hope, your mind with clarity, and your life with endless 
+                        opportunities to grow and shine."
+                    </p>
+                    <p>
+                        "And remember, no matter where life takes you, there will always be people cheering for you, 
+                        believing in you, and wishing nothing but the best for you. <b>You are never alone in your journey.</b>"
+                    </p>
+                    <p>
+                        "So here's to you, <b>Aanu</b> — a wonderful, kind, and inspiring person. 
+                        May your birthday be as beautiful as your heart, as bright as your smile, and as unforgettable as the 
+                        joy you bring into others' lives."
+                    </p>
+                    <p class="font-bold text-[#B76E79]">
+                        Once again, Happy Birthday! May this year be your best one yet, 
+                        filled with love, laughter, success, and everything your heart desires.
+                    </p>
+                </div>
+
+                <div class="mt-10 border-t border-pink-50 pt-6">
+                    <p class="handwritten text-3xl text-[#B76E79]">Always by your side,</p>
+                    <p class="text-sm text-gray-400 mt-2 italic">(And sorry mai sath nhi hun )</p>
+                </div>
+            </div>
+        </div>
+        <button class="next-btn" onclick="goToStep(1)">Replay the Surprise ↺</button>
+    </div>
+
+    <script>
+        // Loader timeout
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('step0').style.opacity = '0';
+                setTimeout(() => document.getElementById('step0').style.display = 'none', 1000);
+            }, 2500);
+        });
+
+        // Navigation function
+        function goToStep(stepNum) {
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            document.getElementById('s' + stepNum).classList.add('active');
+        }
+
+        // Balloon Pop Logic
+        let pops = 0;
+        function pop(id) {
+            const b = document.getElementById('b' + id);
+            if(!b.classList.contains('popped')) {
+                b.classList.add('popped');
+                pops++;
+            }
+            if(pops === 4) {
+                document.getElementById('secret-msg').classList.remove('msg-hidden');
+                document.getElementById('secret-msg').classList.add('msg-visible');
+                document.getElementById('next2').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
